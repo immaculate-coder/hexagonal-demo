@@ -1,0 +1,32 @@
+version: '3.8'
+
+services:
+  mongodb:
+    image: mongo:latest
+    container_name: mongodb
+    ports:
+      - "27017:27017"
+    environment:
+      - MONGO_INITDB_ROOT_USERNAME=immaculate
+      - MONGO_INITDB_ROOT_PASSWORD=notverysecret
+      - MONGO_INITDB_DATABASE=signatures
+
+  postgres:
+    image: postgres:latest
+    container_name: postgres
+    ports:
+      - "5432:5432"
+    environment:
+      - POSTGRES_USER=immaculate
+      - POSTGRES_PASSWORD=notverysecret
+      - POSTGRES_DB=signatures
+
+  rabbitmq:
+    image: rabbitmq:management
+    container_name: rabbitmq
+    ports:
+      - "5672:5672"
+      - "15672:15672"
+    environment:
+      - RABBITMQ_DEFAULT_USER=immaculate
+      - RABBITMQ_DEFAULT_PASS=notverysecret
